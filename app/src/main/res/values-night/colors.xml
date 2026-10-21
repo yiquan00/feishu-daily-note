@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="feishu_primary">#4D85FF</color>
+    <color name="feishu_primary_dark">#3370FF</color>
+    <color name="feishu_surface">#1F2329</color>
+    <color name="feishu_background">#14161A</color>
+    <color name="widget_bg">#1F2329</color>
+    <color name="widget_border">#373B43</color>
+    <color name="widget_text_primary">#F2F3F5</color>
+    <color name="widget_text_secondary">#8F959E</color>
+    <color name="widget_accent">#4D85FF</color>
+    <color name="widget_card_bg">#292D35</color>
+    <color name="widget_sync_ok">#27C346</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+</resources>

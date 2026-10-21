@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/widget_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/widget_background"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Header: App Logo, Tag & Config title, Random button, Add button -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:contentDescription="@string/app_name"
+            android:src="@mipmap/ic_launcher" />
+
+        <TextView
+            android:id="@+id/widget_tag_badge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="飞书日记 · 全部"
+            android:textColor="@color/widget_text_primary"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <!-- 🎲 随机按钮 -->
+        <ImageButton
+            android:id="@+id/widget_btn_random"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/widget_card_background"
+            android:contentDescription="随机换一篇"
+            android:padding="6dp"
+            android:src="@drawable/ic_shuffle_24" />
+
+        <!-- + 快捷写日记 -->
+        <ImageButton
+            android:id="@+id/widget_btn_add"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:background="@drawable/widget_icon_button_bg"
+            android:contentDescription="写日记"
+            android:padding="6dp"
+            android:src="@drawable/ic_add_24" />
+    </LinearLayout>
+
+    <!-- Large Card Content Area -->
+    <LinearLayout
+        android:id="@+id/widget_entry_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_weight="1"
+        android:background="@drawable/widget_card_background"
+        android:orientation="vertical"
+        android:padding="14dp">
+
+        <!-- Meta row: Date and Tag chip -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/widget_entry_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="生活"
+                android:textColor="@color/widget_accent"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <!-- Using FrameLayout instead of forbidden View spacer for RemoteViews compatibility -->
+            <FrameLayout
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/widget_entry_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2026年10月19日"
+                android:textColor="@color/widget_text_secondary"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- Pure Diary Content (文本，无标题) -->
+        <TextView
+            android:id="@+id/widget_entry_snippet"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:lineSpacingExtra="4dp"
+            android:maxLines="8"
+            android:text="记录当下的故事、思考与日常生活点滴..."
+            android:textColor="@color/widget_text_primary"
+            android:textSize="14sp" />
+
+        <!-- Footer row: Sync status & action hint -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/widget_entry_sync_status"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="● 飞书已同步"
+                android:textColor="@color/widget_sync_ok"
+                android:textSize="11sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="查看详情 >"
+                android:textColor="@color/widget_text_secondary"
+                android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Empty state view -->
+    <LinearLayout
+        android:id="@+id/widget_empty_container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="12dp"
+        android:layout_weight="1"
+        android:background="@drawable/widget_card_background"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="📖"
+            android:textSize="32sp" />
+
+        <TextView
+            android:id="@+id/widget_empty_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="暂无日记记录"
+            android:textColor="@color/widget_text_primary"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="点击开始记录"
+            android:textColor="@color/widget_text_secondary"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+</LinearLayout>
