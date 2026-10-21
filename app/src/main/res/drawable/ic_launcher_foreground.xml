@@ -3,6 +3,6 @@
     <item
         android:width="66dp"
         android:height="66dp"
-        android:drawable="@drawable/ic_diary_logo"
+        android:drawable="@drawable/ic_smartisan_diary"
         android:gravity="center" />
 </layer-list>
