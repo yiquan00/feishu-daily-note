@@ -515,8 +515,10 @@ fun DiaryDetailScreen(
                 Column(modifier = Modifier.padding(18.dp)) {
                     Text(
                         text = entry.content,
-                        style = MaterialTheme.typography.bodyLarge,
-                        lineHeight = 26.sp,
+                        style = MaterialTheme.typography.bodyLarge.copy(
+                            fontSize = 18.sp,
+                            lineHeight = 30.sp
+                        ),
                         color = MaterialTheme.colorScheme.onSurface
                     )
 

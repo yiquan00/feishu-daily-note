@@ -32,6 +32,9 @@ class UserPreferencesRepository(context: Context) {
     private val _appLockEnabledFlow = MutableStateFlow(loadAppLockEnabled())
     val appLockEnabledFlow: StateFlow<Boolean> = _appLockEnabledFlow.asStateFlow()
 
+    private val _editorFontSizeFlow = MutableStateFlow(loadEditorFontSize())
+    val editorFontSizeFlow: StateFlow<Int> = _editorFontSizeFlow.asStateFlow()
+
     fun loadConfig(): FeishuConfig {
         return FeishuConfig(
             appId = prefs.getString(KEY_APP_ID, "") ?: "",
@@ -106,6 +109,20 @@ class UserPreferencesRepository(context: Context) {
         _appLockEnabledFlow.value = enabled
     }
 
+    fun loadEditorFontSize(): Int {
+        return prefs.getInt(KEY_EDITOR_FONT_SIZE, 18)
+    }
+
+    fun saveEditorFontSize(size: Int) {
+        val validSize = when {
+            size < 14 -> 14
+            size > 26 -> 26
+            else -> size
+        }
+        prefs.edit().putInt(KEY_EDITOR_FONT_SIZE, validSize).apply()
+        _editorFontSizeFlow.value = validSize
+    }
+
     companion object {
         const val KEY_APP_ID = "feishu_app_id"
         const val KEY_APP_SECRET = "feishu_app_secret"
@@ -120,6 +137,7 @@ class UserPreferencesRepository(context: Context) {
         const val KEY_WIDGET_INDEX = "widget_current_index"
 
         const val KEY_APP_LOCK_ENABLED = "system_lock_enabled"
+        const val KEY_EDITOR_FONT_SIZE = "editor_font_size"
 
         const val THEME_SYSTEM = "SYSTEM"
         const val THEME_LIGHT = "LIGHT"

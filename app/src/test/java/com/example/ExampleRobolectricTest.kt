@@ -24,7 +24,7 @@ class ExampleRobolectricTest {
     fun `read app_name string from context`() {
         val context = ApplicationProvider.getApplicationContext<Context>()
         val appName = context.getString(R.string.app_name)
-        assertEquals("飞书日记", appName)
+        assertEquals("轻·记", appName)
     }
 
     @Test
@@ -92,5 +92,25 @@ class ExampleRobolectricTest {
         // Disable system lock
         prefs.saveAppLockEnabled(false)
         assertFalse(prefs.loadAppLockEnabled())
+    }
+
+    @Test
+    fun `editor font size preferences validation`() {
+        val context = ApplicationProvider.getApplicationContext<Context>()
+        val prefs = UserPreferencesRepository(context)
+
+        // Default font size is 18sp
+        assertEquals(18, prefs.loadEditorFontSize())
+
+        // Save customized font size
+        prefs.saveEditorFontSize(22)
+        assertEquals(22, prefs.loadEditorFontSize())
+
+        // Clamp boundaries
+        prefs.saveEditorFontSize(30)
+        assertEquals(26, prefs.loadEditorFontSize())
+
+        prefs.saveEditorFontSize(10)
+        assertEquals(14, prefs.loadEditorFontSize())
     }
 }

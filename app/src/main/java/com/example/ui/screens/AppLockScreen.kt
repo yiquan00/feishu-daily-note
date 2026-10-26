@@ -80,7 +80,7 @@ fun AppLockScreen(
     fun launchSystemLock() {
         if (keyguardManager != null && isDeviceSecure) {
             val intent = keyguardManager.createConfirmDeviceCredentialIntent(
-                "随心日记",
+                "轻·记",
                 "请验证系统屏幕密码、指纹或面容以解锁日记"
             )
             if (intent != null) {
@@ -131,7 +131,7 @@ fun AppLockScreen(
 
             // App Name & Status Title
             Text(
-                text = "随心日记已锁定",
+                text = "轻·记已锁定",
                 style = MaterialTheme.typography.headlineSmall,
                 fontWeight = FontWeight.Bold,
                 color = MaterialTheme.colorScheme.onSurface,

@@ -69,6 +69,11 @@ class DiaryViewModel(
     val widgetRandomMode: StateFlow<Boolean> = repository.preferences.widgetRandomModeFlow
 
     val appLockEnabled: StateFlow<Boolean> = repository.preferences.appLockEnabledFlow
+    val editorFontSize: StateFlow<Int> = repository.preferences.editorFontSizeFlow
+
+    fun setEditorFontSize(size: Int) {
+        repository.preferences.saveEditorFontSize(size)
+    }
 
     private val _isUnlocked = MutableStateFlow(!repository.preferences.loadAppLockEnabled())
     val isUnlocked: StateFlow<Boolean> = _isUnlocked.asStateFlow()

@@ -1,5 +1,5 @@
 {
-  "name": "飞书日记",
+  "name": "轻·记",
   "description": "记录与展示日常生活点滴的日记应用，支持图文排版、飞书多维表格自动化双向同步、精美桌面组件与深色模式。",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]

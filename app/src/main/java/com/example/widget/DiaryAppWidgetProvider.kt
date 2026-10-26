@@ -121,7 +121,7 @@ class DiaryAppWidgetProvider : AppWidgetProvider() {
 
             // 1. Tag indicator
             val tagDisplay = if (selectedTag == "全部") "全部" else selectedTag
-            views.setTextViewText(R.id.widget_tag_badge, "飞书日记 · $tagDisplay")
+            views.setTextViewText(R.id.widget_tag_badge, "轻·记 · $tagDisplay")
 
             // 2. Click Random / Shuffle Button (🎲 随机换一篇)
             val randomIntent = Intent(context, DiaryAppWidgetProvider::class.java).apply {

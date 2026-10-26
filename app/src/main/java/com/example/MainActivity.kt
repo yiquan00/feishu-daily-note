@@ -152,8 +152,11 @@ fun DiaryApp(viewModel: DiaryViewModel) {
 
             Screen.EDITOR -> {
                 val activeEntry = allEntries.find { it.id == uiState.activeDiaryId } ?: entries.find { it.id == uiState.activeDiaryId }
+                val editorFontSize by viewModel.editorFontSize.collectAsStateWithLifecycle()
                 DiaryEditorScreen(
                     initialEntry = activeEntry,
+                    fontSizeSp = editorFontSize,
+                    onFontSizeChange = viewModel::setEditorFontSize,
                     onSave = { id, content, timestamp, tags, location, images ->
                         viewModel.saveDiary(
                             id = id,

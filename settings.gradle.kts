@@ -22,6 +22,6 @@ dependencyResolutionManagement {
   }
 }
 
-rootProject.name = "飞书日记"
+rootProject.name = "轻·记"
 
 include(":app")
