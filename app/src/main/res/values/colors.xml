@@ -5,12 +5,12 @@
     <color name="feishu_surface">#FFFFFF</color>
     <color name="feishu_background">#FBFBFA</color>
     <color name="widget_bg">#FFFFFF</color>
-    <color name="widget_border">#E9E9E7</color>
-    <color name="widget_text_primary">#37352F</color>
-    <color name="widget_text_secondary">#787774</color>
+    <color name="widget_border">#EAE8E4</color>
+    <color name="widget_text_primary">#26282A</color>
+    <color name="widget_text_secondary">#7A7875</color>
     <color name="widget_accent">#37352F</color>
-    <color name="widget_card_bg">#F7F6F3</color>
-    <color name="widget_sync_ok">#28583B</color>
+    <color name="widget_card_bg">#F2F1EC</color>
+    <color name="widget_sync_ok">#3E7B54</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>

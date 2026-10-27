@@ -119,9 +119,10 @@ class DiaryAppWidgetProvider : AppWidgetProvider() {
         for (widgetId in appWidgetIds) {
             val views = RemoteViews(context.packageName, R.layout.widget_diary_layout)
 
-            // 1. Tag indicator
-            val tagDisplay = if (selectedTag == "全部") "全部" else selectedTag
-            views.setTextViewText(R.id.widget_tag_badge, "轻·记 · $tagDisplay")
+            // 1. 隐藏 App 标题、同步状态及标签，仅保留纯粹内容与日期
+            views.setViewVisibility(R.id.widget_tag_badge, View.GONE)
+            views.setViewVisibility(R.id.widget_entry_sync_status, View.GONE)
+            views.setViewVisibility(R.id.widget_entry_tag, View.GONE)
 
             // 2. Click Random / Shuffle Button (🎲 随机换一篇)
             val randomIntent = Intent(context, DiaryAppWidgetProvider::class.java).apply {
@@ -164,29 +165,14 @@ class DiaryAppWidgetProvider : AppWidgetProvider() {
                     PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
                 )
                 views.setOnClickPendingIntent(R.id.widget_entry_container, mainPendingIntent)
+                views.setOnClickPendingIntent(R.id.widget_entry_snippet, mainPendingIntent)
 
-                val timeFormat = SimpleDateFormat("yyyy年M月d日 EEE HH:mm", Locale.CHINA)
+                val timeFormat = SimpleDateFormat("M月d日 EEE HH:mm", Locale.CHINA)
                 views.setTextViewText(R.id.widget_entry_date, timeFormat.format(Date(currentEntry.timestamp)))
 
                 // Pure diary text snippet
                 val previewText = currentEntry.content.ifBlank { "（无文字内容）" }
                 views.setTextViewText(R.id.widget_entry_snippet, previewText)
-
-                val firstTag = currentEntry.getTagList().firstOrNull() ?: "生活"
-                val tagDisplayStr = if (currentEntry.location.isNotBlank()) {
-                    "$firstTag · 📍${currentEntry.location}"
-                } else {
-                    firstTag
-                }
-                views.setTextViewText(R.id.widget_entry_tag, tagDisplayStr)
-
-                val syncText = when (currentEntry.syncStatus) {
-                    SyncStatus.SYNCED -> "● 飞书已同步"
-                    SyncStatus.PENDING_UPLOAD, SyncStatus.PENDING_UPDATE -> "○ 待同步"
-                    SyncStatus.ERROR -> "✕ 同步异常"
-                    else -> "● 本地就绪"
-                }
-                views.setTextViewText(R.id.widget_entry_sync_status, syncText)
             } else {
                 views.setViewVisibility(R.id.widget_entry_container, View.GONE)
                 views.setViewVisibility(R.id.widget_empty_container, View.VISIBLE)
